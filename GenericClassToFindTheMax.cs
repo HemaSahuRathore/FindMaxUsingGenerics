@@ -8,31 +8,31 @@ namespace FindMaxProblemUsingGenerics
 {
     public class GenericClassToFindTheMax<T> where T : IComparable
     {
-        public T val1, val2, val3;
+        public T[] value;
 
-        public GenericClassToFindTheMax(T val1, T val2, T val3)
+        //Constructor to assign the Instance Variable
+        public GenericClassToFindTheMax(T[] value)
         {
-            this.val1 = val1;
-            this.val2 = val2;
-            this.val3 = val3;
+            this.value = value;
         }
 
-        //Generic Method to find Max Value
-        public static T FindTheMaxValue(T val1, T val2, T val3)
+        //Method to sort array
+        public T[] SortArray(T[] values)
         {
-            if ((val1.CompareTo(val2) >= 0) && (val1.CompareTo(val3) >= 0))
-                return val1;
-            else if ((val2.CompareTo(val1) >= 0) && (val2.CompareTo(val3) >= 0))
-                return val2;
-            else if ((val3.CompareTo(val1) >= 0) && (val3.CompareTo(val2) >= 0))
-                return val3;
-            else
-                return default;  //return based on the data type
+            Array.Sort(values);
+            return values;
+        }
+        
+        //Method to find Max Value
+        public T MaxValue(params T[] values) //using param keyword to extend the Maxvalue method to take more than 3 Parameters
+        {
+            var sortedValues = SortArray(values);
+            return sortedValues[sortedValues.Length - 1];
         }
 
         public T MaxMethod()
         {
-            T max = GenericClassToFindTheMax<T>.FindTheMaxValue(this.val1, this.val2, this.val3);  
+            T max = MaxValue(this.value);  
             return max;
         }
    
