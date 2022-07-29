@@ -30,10 +30,11 @@ namespace FindMaxProblemUsingGenerics
             return sortedValues[sortedValues.Length - 1];
         }
 
-        public T MaxMethod()
+        //Method to Print the Maximum value
+        public void PrintMaxMethod()
         {
-            T max = MaxValue(this.value);  
-            return max;
+            T max = MaxValue(this.value);
+            Console.WriteLine("\nThe Maximum value of Integer: " + max); 
         }
    
     }
