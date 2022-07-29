@@ -7,7 +7,16 @@ using System.Threading.Tasks;
 namespace FindMaxProblemUsingGenerics
 {
     public class GenericClassToFindTheMax<T> where T : IComparable
-    {    
+    {
+        public T val1, val2, val3;
+
+        public GenericClassToFindTheMax(T val1, T val2, T val3)
+        {
+            this.val1 = val1;
+            this.val2 = val2;
+            this.val3 = val3;
+        }
+
         //Generic Method to find Max Value
         public static T FindTheMaxValue(T val1, T val2, T val3)
         {
@@ -19,6 +28,12 @@ namespace FindMaxProblemUsingGenerics
                 return val3;
             else
                 return default;  //return based on the data type
+        }
+
+        public T MaxMethod()
+        {
+            T max = GenericClassToFindTheMax<T>.FindTheMaxValue(this.val1, this.val2, this.val3);  
+            return max;
         }
    
     }
